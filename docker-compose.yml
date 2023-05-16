@@ -6,6 +6,7 @@ services:
     # Faz o build do Dockerfile da pasta atual e utiliza o resultado desse build
     # como a imagem do container
     image: blogs_api
+    user: node
     build: .
     # Nome do container para facilitar execução
     container_name: blogs_api
