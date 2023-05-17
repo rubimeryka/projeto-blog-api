@@ -4,9 +4,9 @@ const UserService = require('../services/UserService');
 const { JWT_SECRET } = process.env;
 
 const login = async (req, res) => {
-    const { email, pasword } = req.body;
+    const { email, password } = req.body;
 
-    const user = await UserService.login(email, pasword);
+    const user = await UserService.login({ email, password });
     
     if (user === null) {
         return res.status(400).json({ message: 'Invalid fields' });
@@ -20,7 +20,7 @@ const login = async (req, res) => {
         expiresIn: '1h',
       });
 
-    res.status(200).json(token);
+    res.status(200).json({ token });
 };
 
 module.exports = {
