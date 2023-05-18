@@ -45,7 +45,16 @@ const addNewUser = async (req, res) => {
   res.status(201).json({ token });
 };
 
+const getAllUsers = async (_req, res) => {
+  const user = await UserService.getAllUsers();
+  
+  user.forEach((_e, i) => delete user[i].dataValues.password); // undefined password
+  
+  return res.status(200).json(user);
+};
+
 module.exports = {
     login,
     addNewUser,
+    getAllUsers,
 };

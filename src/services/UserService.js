@@ -20,8 +20,11 @@ const findEmail = async (email) => {
   return user;
 };
 
+const getAllUsers = () => User.findAll();
+
   module.exports = {
     login,
     addNewUser,
     findEmail,
+    getAllUsers,
   };

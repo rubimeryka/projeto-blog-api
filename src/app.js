@@ -5,6 +5,7 @@ validateDisplayName,
 validateEmail,
 validatePassword,
  } = require('./middlewares/userMiddleware');
+ const validateToken = require('./middlewares/tokenMiddleware');
 
 // ...
 
@@ -28,6 +29,8 @@ validateEmail,
 validatePassword,
 UserController.addNewUser,
 );
+
+app.get('/user', validateToken, UserController.getAllUsers);
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
