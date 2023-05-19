@@ -2,9 +2,13 @@ const CategoryService = require('../services/CategoryService');
 
 const addCategory = async (req, res) => {
   try {
-    const { body } = req;
+    const { name } = req;
     
-    const category = await CategoryService.addCategory(body);
+    const category = await CategoryService.addCategory({ name });
+
+    if (!name) {
+        return res.status(400).json({ message: '"name" is required' });
+      }
     
     return res.status(201).json(category);
   } catch (error) {
