@@ -32,6 +32,8 @@ UserController.addNewUser,
 
 app.get('/user', validateToken, UserController.getAllUsers);
 
+app.get('/user/:id', validateToken, UserController.getUserById);
+
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
 module.exports = app;
