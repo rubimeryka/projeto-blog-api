@@ -9,7 +9,7 @@ const login = async ({ email, password }) => {
 };
 
 const addNewUser = async ({ displayName, email, password, image }) => {
-  const user = await User.findOne({ displayName, email, password, image });
+  const user = await User.create({ displayName, email, password, image });
   
   return user;
 };

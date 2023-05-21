@@ -13,7 +13,7 @@ const login = async (req, res) => {
       }
   
     const payload = {
-        algorithm: 'HS256',
+        id: user.id,
       };
     
     const token = jwt.sign(payload, JWT_SECRET, {
@@ -30,12 +30,12 @@ const addNewUser = async (req, res) => {
 
   const user = await UserService.addNewUser({ displayName, email, password, image });
   
-  if (user) {
+  if (!user) {
       return res.status(409).json({ message: 'User already registered' });
     }
   
   const payload = {
-      algorithm: 'HS256',
+      id: user.id,
     };
   
   const token = jwt.sign(payload, JWT_SECRET, {
